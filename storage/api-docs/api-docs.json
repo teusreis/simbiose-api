@@ -1,0 +1,182 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My First API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/rouanet": {
+            "get": {
+                "tags": [
+                    "rouanet"
+                ],
+                "summary": "Retorna os dados ca tablea 'tb_projeto_rouanet_teste' com paginação",
+                "operationId": "getRouanet",
+                "parameters": [
+                    {
+                        "name": "loadAll",
+                        "in": "path",
+                        "description": "Carregar todos os registros do banco de uma só vez",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        },
+                        "example": "true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "current_page": {
+                                            "type": "integer",
+                                            "readOnly": "true"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Rouanet"
+                                            },
+                                            "collectionFormat": "multi",
+                                            "readOnly": "true"
+                                        },
+                                        "first_page_url": {
+                                            "type": "string",
+                                            "readOnly": "true"
+                                        },
+                                        "from": {
+                                            "type": "integer",
+                                            "readOnly": "true"
+                                        },
+                                        "last_page": {
+                                            "type": "integer",
+                                            "readOnly": "true"
+                                        },
+                                        "last_page_url": {
+                                            "type": "string",
+                                            "readOnly": "true"
+                                        },
+                                        "next_page_url": {
+                                            "type": "string",
+                                            "readOnly": "true"
+                                        },
+                                        "path": {
+                                            "description": "User role",
+                                            "type": "string",
+                                            "readOnly": "true"
+                                        },
+                                        "per_page": {
+                                            "type": "integer",
+                                            "readOnly": "true"
+                                        },
+                                        "prev_page_url": {
+                                            "type": "string",
+                                            "readOnly": "true"
+                                        },
+                                        "to": {
+                                            "type": "integer",
+                                            "readOnly": "true"
+                                        },
+                                        "total": {
+                                            "type": "integer",
+                                            "readOnly": "true"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Rouanet": {
+                "properties": {
+                    "id_projeto": {
+                        "type": "integer"
+                    },
+                    "pronac": {
+                        "type": "string"
+                    },
+                    "ano_projeto": {
+                        "type": "string"
+                    },
+                    "nome": {
+                        "type": "string"
+                    },
+                    "segmento": {
+                        "type": "string"
+                    },
+                    "area": {
+                        "type": "string"
+                    },
+                    "uf": {
+                        "type": "string"
+                    },
+                    "municipio": {
+                        "type": "string"
+                    },
+                    "data_inicio": {
+                        "type": "string"
+                    },
+                    "situacao": {
+                        "type": "string"
+                    },
+                    "mecanismo": {
+                        "type": "string"
+                    },
+                    "valor_captado": {
+                        "type": "string"
+                    },
+                    "valor_aprovado": {
+                        "type": "string"
+                    },
+                    "acessibilidade": {
+                        "type": "string"
+                    },
+                    "objetivo": {
+                        "type": "string"
+                    },
+                    "justificativa": {
+                        "type": "string"
+                    },
+                    "etapa": {
+                        "type": "string"
+                    },
+                    "ficha_tecnica": {
+                        "type": "string"
+                    },
+                    "impacto_ambiental": {
+                        "type": "string"
+                    },
+                    "especificacao_tecnica": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "passport": {
+                "type": "oauth2",
+                "description": "Laravel passport oauth2 security.",
+                "in": "header",
+                "scheme": "https",
+                "flows": {
+                    "password": {
+                        "authorizationUrl": "http://simbiose-api.test/oauth/authorize",
+                        "tokenUrl": "http://simbiose-api.test/oauth/token",
+                        "refreshUrl": "http://simbiose-api.test/token/refresh",
+                        "scopes": []
+                    }
+                }
+            }
+        }
+    }
+}
